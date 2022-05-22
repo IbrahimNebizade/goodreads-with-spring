@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create books table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: books
+            remarks: table for storing books information
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: text
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: key
+                  type: text
+              - column:
+                  name: overall_rating
+                  type: numeric(3,2)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

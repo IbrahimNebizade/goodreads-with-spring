@@ -1,0 +1,59 @@
+table authors {
+  id bigint
+  key text
+  name text
+  bio text
+  birth_date date
+  created_at timestamp
+  last_updated_at timestamp
+}
+
+table books {
+    id bigint
+    title text
+    description text
+    key text
+    overall_rating decimal
+    created_at timestamp
+    last_updated_at timestamp
+}
+
+
+table authors_books {
+  author_id bigint [ref: > authors.id]
+  book_id bigint [ref: > books.id]
+}
+
+table users {
+  id bigint
+  alias text
+  firstname text
+  lastname text
+  created_at timestamp
+  last_updated_at timestamp
+}
+
+table user_login_details {
+  user_id bigint [ref: > users.id]
+  email text
+  password text
+}
+
+table user_book_reviews {
+  user_id bigint [ref: > users.id]
+  book_id bigint [ref: > books.id]
+  read_status enum [note: 'READ, WANT_TO_READ, CURRENTLY_READING']
+  rating integer
+}
+
+table user_book_comments {
+  id bigint
+  parent_comment_id bigint [ref: > user_book_comments.id]
+  user_id bigint [ref: > users.id]
+  book_id bigint [ref: > books.id]
+  comment text
+  created_at timestamp
+  last_updated_at timestamp
+  status enum [note: 'EDITED, DELETED']
+
+}

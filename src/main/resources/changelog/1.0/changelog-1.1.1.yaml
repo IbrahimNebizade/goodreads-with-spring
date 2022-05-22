@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: make user_id pk in user_login_details
+      author: Ibrahim Nebzade
+      changes:
+        - addPrimaryKey:
+            tableName: user_login_details
+            clustered: true
+            columnNames: user_id
+            constraintName: pk_user_login_details_user_id
+            validate: true

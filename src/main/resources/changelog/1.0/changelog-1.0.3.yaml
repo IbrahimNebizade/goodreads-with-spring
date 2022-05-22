@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create author_books table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: author_books
+            columns:
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_author_books_author_id_to_authors_id
+                    references: authors(id)
+                    deleteCascade: true
+              - column:
+                  name: book_id
+                  type: bigint
+        - addForeignKeyConstraint:
+            constraintName: fk_author_books_book_id_to_books_id
+            baseTableName: author_books
+            baseColumnNames: book_id
+            referencedTableName: books
+            referencedColumnNames: id
+            deleteCascade: true
+            validate: true

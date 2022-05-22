@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: alter birth_date column data type in authors
+      author: Ibrahim Nebzade
+      changes:
+        - modifyDataType:
+            tableName: authors
+            columnName: birth_date
+            newDataType: text

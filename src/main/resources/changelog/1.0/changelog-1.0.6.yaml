@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create user_book_reviews table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: user_book_reviews
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_book_reviews_user_id_to_users_id
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_book_reviews_book_id_to_books_id
+                    references: books(id)
+                    deleteCascade: true
+              - column:
+                  name: read_status
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rating
+                  type: integer
+        - createIndex:
+            clustered: true
+            columns:
+              - column:
+                  name: read_status
+            tableName: user_book_reviews
+            indexName: idx_user_book_reviews_read_status

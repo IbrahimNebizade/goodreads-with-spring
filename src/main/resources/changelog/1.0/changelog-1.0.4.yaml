@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create users table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_users_id
+              - column:
+                  name: alias
+                  type: text
+              - column:
+                  name: firstname
+                  type: text
+              - column:
+                  name: lastname
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

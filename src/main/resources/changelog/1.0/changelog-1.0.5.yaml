@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create user_login_details table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: user_login_details
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_login_details_user_id_to_users_id
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: email
+                  type: text
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: text
+                  constraints:
+                    nullable: false

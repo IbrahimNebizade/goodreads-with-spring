@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: create user_book_comments table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            remarks: This table stores user comments about books
+            tableName: user_book_comments
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: false
+              - column:
+                  name: parent_comment_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_book_comments_parent_comment_id_to_user_book_comments_id
+                    references: user_book_comments(id)
+                    deleteCascade: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_book_comments_user_id_to_user_id
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_book_comments_book_id_to_book_id
+                    references: books(id)
+                    deleteCascade: true
+              - column:
+                  name: comment
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: text
+                  remarks: "This column stores status enum: EDITED, DELETED"

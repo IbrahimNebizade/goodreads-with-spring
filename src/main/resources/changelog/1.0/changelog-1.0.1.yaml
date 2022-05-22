@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create authors table
+      author: Ibrahim Nebzade
+      changes:
+        - createTable:
+            tableName: authors
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: false
+              - column:
+                  name: key
+                  type: text
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: bio
+                  type: text
+              - column:
+                  name: birth_date
+                  type: date
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

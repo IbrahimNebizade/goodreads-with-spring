@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: make user_id and book_id composite pk in user_book_reviews
+      author: Ibrahim Nebzade
+      changes:
+        - addPrimaryKey:
+            tableName: user_book_reviews
+            clustered: true
+            columnNames: user_id, book_id
+            constraintName: pk_user_book_reviews_user_id_book_id
+            validate: true
