@@ -50,7 +50,7 @@ client:
 
 logging:
   level:
-    az.developia.goodreads: debug
+    com.company.goodreadsapp: debug
 
 jwt:
   secretKey: ${JWT_SECRET}
