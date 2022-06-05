@@ -48,9 +48,6 @@ client:
   openlib:
     url: https://openlibrary.org/
 
-logging:
-  level:
-    com.company.goodreadsapp: debug
 
 jwt:
   secretKey: ${JWT_SECRET}
